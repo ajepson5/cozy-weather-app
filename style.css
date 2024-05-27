@@ -41,9 +41,9 @@ h1 {
   font-size: 40px;
 }
 
-.icon {
-  padding: 50px 0;
-  font-size: 50px;
+.weather-icon {
+  padding: 30px 0;
+  width: 150px;
 }
 
 .temp {

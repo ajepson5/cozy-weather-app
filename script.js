@@ -1,24 +1,20 @@
-function formatDay(date) {
+function formatDate(date) {
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
   let day = days[date.getDay()];
-  return `${day}`;
-}
-
-function formatTime(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}`;
+  return `${day}, ${hours}:${minutes}`;
 }
 
 function updateWeatherData(response) {
@@ -32,11 +28,10 @@ function updateWeatherData(response) {
   humidityElement.innerHTML = response.data.temperature.humidity + " %";
   windElement.innerHTML = response.data.wind.speed + " mph";
   let date = new Date(response.data.time * 1000);
-  let dayElement = document.querySelector("#day");
-  let timeElement = document.querySelector("#time");
-  console.log(dayElement);
-  dayElement.innerHTML = formatDay(date) + ",";
-  timeElement.innerHTML = formatTime(date);
+  let dayTimeElement = document.querySelector("#dayTime");
+  dayTimeElement.innerHTML = formatDate(date);
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class = "weather-icon"/>`;
 }
 
 function searchCity(city) {
