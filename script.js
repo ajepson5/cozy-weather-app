@@ -1,9 +1,42 @@
+function formatDay(date) {
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  let day = days[date.getDay()];
+  return `${day}`;
+}
+
+function formatTime(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 function updateWeatherData(response) {
   let temperatureElement = document.querySelector("#tempData");
   let temperature = response.data.temperature.current;
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
+  let humidityElement = document.querySelector("#humidityData");
+  let windElement = document.querySelector("#windData");
   temperatureElement.innerHTML = Math.round(temperature);
+  cityElement.innerHTML = response.data.city;
+  humidityElement.innerHTML = response.data.temperature.humidity + " %";
+  windElement.innerHTML = response.data.wind.speed + " mph";
+  let date = new Date(response.data.time * 1000);
+  let dayElement = document.querySelector("#day");
+  let timeElement = document.querySelector("#time");
+  console.log(dayElement);
+  dayElement.innerHTML = formatDay(date) + ",";
+  timeElement.innerHTML = formatTime(date);
 }
 
 function searchCity(city) {

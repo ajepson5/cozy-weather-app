@@ -41,11 +41,6 @@ h1 {
   font-size: 40px;
 }
 
-p {
-  line-height: 5px;
-  font-size: 15px;
-}
-
 .icon {
   padding: 50px 0;
   font-size: 50px;
@@ -55,6 +50,20 @@ p {
   font-size: 40px;
   line-height: 20px;
 }
+.greeting {
+  padding: 15px 0 0 0;
+  font-size: 15px;
+}
+.humidity-wind {
+  padding: 30px 0 0 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.extraInfo {
+  font-size: 12px;
+}
+
 footer {
   padding: 25px 0 0 0;
 }
